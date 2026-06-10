@@ -312,6 +312,21 @@ export function InputHelperText({
 	);
 }
 
+export function InputError({
+	children,
+	className,
+}: {
+	children: React.ReactNode;
+	className?: string;
+}) {
+	if (!children) return null;
+	return (
+		<InputHelperText isError={true} className={className}>
+			{children}
+		</InputHelperText>
+	);
+}
+
 interface InputRootProps extends Omit<InputFieldProps, 'children'> {
 	children?: React.ReactNode;
 	className?: string;
@@ -414,6 +429,7 @@ const Input = Object.assign(InputRoot, {
 	Field: InputField,
 	Password: InputPassword,
 	HelperText: InputHelperText,
+	Error: InputError,
 });
 
 export default Input;
