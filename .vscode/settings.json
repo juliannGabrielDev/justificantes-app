@@ -21,5 +21,17 @@
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4
 	},
-	"conventionalCommits.scopes": ["boilerplate", "deps", "styles"]
+	"conventionalCommits.scopes": [
+		"boilerplate",
+		"deps",
+		"styles",
+		"agents",
+		"config",
+		"ui",
+		"assets",
+		"components",
+		"screens",
+		"docs",
+		"context"
+	]
 }
