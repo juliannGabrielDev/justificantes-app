@@ -6,13 +6,7 @@ import * as Haptics from 'expo-haptics';
 import { manipulateAsync, SaveFormat } from 'expo-image-manipulator';
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
-import {
-	Image,
-	Linking,
-	Text,
-	useColorScheme,
-	View,
-} from 'react-native';
+import { Image, Linking, Text, useColorScheme, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import {
 	CameraIcon,
@@ -130,7 +124,8 @@ export default function CustomImagePicker({
 		} catch (error) {
 			console.error('Error processing image:', error);
 			showAlert('Error', {
-				message: 'No se pudo procesar y optimizar la imagen seleccionada.',
+				message:
+					'No se pudo procesar y optimizar la imagen seleccionada.',
 			});
 		} finally {
 			setIsProcessing(false);
@@ -147,7 +142,8 @@ export default function CustomImagePicker({
 
 			if (permission.status === 'denied') {
 				showAlert('Permiso de Cámara Requerido', {
-					message: 'Has denegado el acceso a la cámara. Por favor, ve a la configuración de tu teléfono para habilitar el permiso de cámara y poder tomar fotos.',
+					message:
+						'Has denegado el acceso a la cámara. Por favor, ve a la configuración de tu teléfono para habilitar el permiso de cámara y poder tomar fotos.',
 					confirmText: 'Abrir Configuración',
 					cancelText: 'Cancelar',
 					onConfirm: () => Linking.openSettings(),
@@ -165,7 +161,8 @@ export default function CustomImagePicker({
 
 			if (permission.status === 'denied') {
 				showAlert('Permiso de Galería Requerido', {
-					message: 'Has denegado el acceso a la galería. Por favor, ve a la configuración de tu teléfono para habilitar el permiso de fotos y poder subir imágenes.',
+					message:
+						'Has denegado el acceso a la galería. Por favor, ve a la configuración de tu teléfono para habilitar el permiso de fotos y poder subir imágenes.',
 					confirmText: 'Abrir Configuración',
 					cancelText: 'Cancelar',
 					onConfirm: () => Linking.openSettings(),
