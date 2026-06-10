@@ -1,14 +1,11 @@
+import JustificanteBadge from '@/components/justificantes/JustificanteBadge';
 import Button from '@/components/ui/button';
+import { useCustomAlert } from '@/context/AlertContext';
 import { File, Paths } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import { useState } from 'react';
-import { Alert, ScrollView, Text, View } from 'react-native';
-import {
-	ArrowDownTrayIcon,
-	BriefcaseIcon,
-	ExclamationTriangleIcon,
-	HeartIcon,
-} from 'react-native-heroicons/outline';
+import { ScrollView, Text, View } from 'react-native';
+import { ArrowDownTrayIcon } from 'react-native-heroicons/outline';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const RULES_PDF_URL =
@@ -18,6 +15,7 @@ export default function StudentRules() {
 	const insets = useSafeAreaInsets();
 	const [isDownloading, setIsDownloading] = useState(false);
 	const [downloadProgress, setDownloadProgress] = useState(0);
+	const { showAlert } = useCustomAlert();
 
 	const handleDownloadPDF = async () => {
 		try {
@@ -36,7 +34,7 @@ export default function StudentRules() {
 							setDownloadProgress(progress);
 						}
 					},
-				}
+				},
 			);
 
 			const resultFile = await downloadTask.downloadAsync();
@@ -52,17 +50,17 @@ export default function StudentRules() {
 					UTI: 'com.adobe.pdf',
 				});
 			} else {
-				Alert.alert(
-					'Algo salió mal',
-					'La función de compartir no está disponible en este dispositivo.',
-				);
+				showAlert('Algo salió mal', {
+					message:
+						'La función de compartir no está disponible en este dispositivo.',
+				});
 			}
 		} catch (error) {
 			console.error(error);
-			Alert.alert(
-				'Algo salió mal',
-				'No se pudo descargar el reglamento, intenta más tarde.',
-			);
+			showAlert('Algo salió mal', {
+				message:
+					'No se pudo descargar el reglamento, intenta más tarde.',
+			});
 		} finally {
 			setIsDownloading(false);
 		}
@@ -95,17 +93,11 @@ export default function StudentRules() {
 				</Text>
 
 				{/* badge */}
-				<View className="bg-not-pink flex-row items-center gap-2 self-start px-2 py-1">
-					<HeartIcon size={20} color="#000000" />
-					<Text className="list-title text-black">I</Text>
-				</View>
+				<JustificanteBadge fraction="I" />
 				<Text className="paragraph-bold">Por enfermedad;</Text>
 
 				{/* badge */}
-				<View className="bg-simple-blue flex-row items-center gap-2 self-start px-2 py-1">
-					<BriefcaseIcon size={20} color="#000000" />
-					<Text className="list-title text-black">II</Text>
-				</View>
+				<JustificanteBadge fraction="II" />
 				<Text className="paragraph text-justify">
 					<Text className="paragraph-bold">
 						Por el cumplimiento de una comisión conferida por
@@ -119,10 +111,7 @@ export default function StudentRules() {
 				</Text>
 
 				{/* badge */}
-				<View className="bg-simple-orange flex-row items-center gap-2 self-start px-2 py-1">
-					<ExclamationTriangleIcon size={20} color="#000000" />
-					<Text className="list-title text-black">III</Text>
-				</View>
+				<JustificanteBadge fraction="III" />
 				<Text className="paragraph text-justify">
 					<Text className="paragraph-bold">
 						Por causa de fuerza mayor justificada
