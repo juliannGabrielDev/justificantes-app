@@ -23,6 +23,10 @@ SplashScreen.preventAutoHideAsync();
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
+import { AlertProvider } from '@/context/AlertContext';
+import { BlurTargetProvider, useBlurTarget } from '@/context/BlurTargetContext';
+import { BlurTargetView } from 'expo-blur';
+
 const MyDefaultTheme = {
 	...DefaultTheme,
 	colors: {
@@ -38,6 +42,25 @@ const MyDarkTheme = {
 		background: '#131313',
 	},
 };
+
+function RootLayoutContent() {
+	const colorScheme = useColorScheme();
+	const blurRef = useBlurTarget();
+
+	return (
+		<BlurTargetView ref={blurRef} style={{ flex: 1 }}>
+			<ThemeProvider
+				value={colorScheme === 'dark' ? MyDarkTheme : MyDefaultTheme}
+			>
+				<Stack screenOptions={{ headerShown: false }} />
+				<StatusBar
+					style={colorScheme === 'dark' ? 'light' : 'dark'}
+					animated
+				/>
+			</ThemeProvider>
+		</BlurTargetView>
+	);
+}
 
 export default function RootLayout() {
 	const colorScheme = useColorScheme();
@@ -65,15 +88,11 @@ export default function RootLayout() {
 
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
-			<ThemeProvider
-				value={colorScheme === 'dark' ? MyDarkTheme : MyDefaultTheme}
-			>
-				<Stack screenOptions={{ headerShown: false }} />
-				<StatusBar
-					style={colorScheme === 'dark' ? 'light' : 'dark'}
-					animated
-				/>
-			</ThemeProvider>
+			<BlurTargetProvider>
+				<AlertProvider>
+					<RootLayoutContent />
+				</AlertProvider>
+			</BlurTargetProvider>
 		</GestureHandlerRootView>
 	);
 }
