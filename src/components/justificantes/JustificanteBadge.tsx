@@ -13,7 +13,10 @@ interface JustificanteBadgeProps {
 	className?: string;
 }
 
-export default function JustificanteBadge({ fraction, className = '' }: JustificanteBadgeProps) {
+export default function JustificanteBadge({
+	fraction,
+	className = '',
+}: JustificanteBadgeProps) {
 	let bgClass = 'bg-not-pink';
 	let Icon = HeartIcon;
 
@@ -26,7 +29,9 @@ export default function JustificanteBadge({ fraction, className = '' }: Justific
 	}
 
 	return (
-		<View className={`${bgClass} flex-row items-center gap-2 self-start px-2 py-1 ${className}`}>
+		<View
+			className={`${bgClass} flex-row items-center gap-2 self-start px-2 py-1 ${className}`}
+		>
 			<Icon size={20} color="#000000" />
 			<Text className="list-title text-black">{fraction}</Text>
 		</View>

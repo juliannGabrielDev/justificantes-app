@@ -44,7 +44,7 @@ export default function JustificanteCard({
 	return (
 		<Pressable
 			onPress={handlePress}
-			className="border-on-surface active:opacity-90 overflow-hidden rounded-[20px] border-2 border-dashed"
+			className="border-on-surface overflow-hidden rounded-[20px] border-2 border-dashed active:opacity-90"
 		>
 			<View className="bg-surface-base gap-2 p-4">
 				<View className="flex-row justify-between">

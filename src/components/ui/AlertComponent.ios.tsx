@@ -13,7 +13,10 @@ export default function AlertComponent({
 	onDismiss,
 }: AlertComponentProps) {
 	return (
-		<Host matchContents style={{ position: 'absolute', width: 0, height: 0 }}>
+		<Host
+			matchContents
+			style={{ position: 'absolute', width: 0, height: 0 }}
+		>
 			<Alert
 				title={title}
 				isPresented={visible}

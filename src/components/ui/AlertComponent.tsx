@@ -35,7 +35,9 @@ export default function AlertComponent({
 			buttons.push({
 				text: confirmText,
 				onPress: onConfirm,
-				style: (destructive ? 'destructive' : 'default') as 'destructive' | 'default',
+				style: (destructive ? 'destructive' : 'default') as
+					| 'destructive'
+					| 'default',
 			});
 
 			Alert.alert(title, message || '', buttons, {
@@ -43,7 +45,16 @@ export default function AlertComponent({
 				onDismiss: onDismiss,
 			});
 		}
-	}, [visible, title, message, confirmText, cancelText, destructive, onConfirm, onDismiss]);
+	}, [
+		visible,
+		title,
+		message,
+		confirmText,
+		cancelText,
+		destructive,
+		onConfirm,
+		onDismiss,
+	]);
 
 	return null;
 }

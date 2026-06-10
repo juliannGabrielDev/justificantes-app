@@ -13,7 +13,10 @@ export default function AlertComponent({
 	if (!visible) return null;
 
 	return (
-		<Host matchContents style={{ position: 'absolute', width: 0, height: 0 }}>
+		<Host
+			matchContents
+			style={{ position: 'absolute', width: 0, height: 0 }}
+		>
 			<AlertDialog onDismissRequest={onDismiss}>
 				<AlertDialog.Title>
 					<Text>{title}</Text>
