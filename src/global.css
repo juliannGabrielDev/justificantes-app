@@ -43,6 +43,10 @@
 	@apply font-display text-[32px];
 	color: var(--color-on-surface-super);
 }
+.page-title {
+	@apply font-display text-2xl;
+	color: var(--color-on-surface-super);
+}
 .list-title {
 	@apply font-mono-semibold text-sm;
 	color: var(--color-on-surface);
@@ -58,6 +62,11 @@
 	font-size: 14px;
 }
 .paragraph,
+.paragraph-mono-bold,
+.paragraph-mono-medium,
+.list-item-title,
+.caption,
+.caption-bold,
 .paragraph-bold {
 	color: var(--color-on-surface);
 }
@@ -74,9 +83,16 @@
 .paragraph-mono-bold {
 	font-family: var(--font-mono-bold);
 }
-.paragraph {
+.paragraph,
+.caption {
 	font-family: var(--font-sans);
 }
-.paragraph-bold {
+.paragraph-bold,
+.caption-bold {
 	font-family: var(--font-sans-bold);
+}
+
+.caption,
+.caption-bold {
+	font-size: 12px;
 }
